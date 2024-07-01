@@ -11,7 +11,31 @@
               <form [formGroup]="addMissionSkillForm">
                 <div class="row" style="padding: 3px 10px 3px 10px;">
                   <input type="hidden" formControlName="id">
-                  
+                  <div class="tableData">
+                    <table style="width: 100%;">
+                    <thead>
+                      <tr>
+                        <th scope="col">Skill Name</th>
+                        <th scope="col" style="text-align: right;">Status</th>
+                        <th scope="col" style="text-align: right;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     <ng-container *ngIf="(missionSkillList | filter:searchText | paginate :{ itemsPerPage: itemsPerPages, currentPage: page })as result">
+                       <tr *ngFor="let item of result">
+                        <td>{{item.skillName}}</td>
+                        <td style="text-align: right;color:#14c506;" [ngStyle]="item.status == 'active' ? {'color': '#14c506'} : {'color': '#ff0000'}">{{item.status == 'active' ? 'Active' : 'In-Active'}}</td>
+                        <td style="text-align: right;">
+       
+                        </td>
+                      </tr>
+                      <tr *ngIf="result.length === 0">
+                       <td colspan="6" style="text-align:center;width:100%;font-size:20px;color: red;"><b>No Data Found </b> </td>
+                     </tr>
+                     </ng-container>
+                    </tbody>
+                  </table>
+                  </div>
                   <div class="form-group">
                     <label class="col-form-label">Status</label>
                     <select class="form-select"formControlName="status" [class.error]="addMissionSkillForm.controls['status'].dirty && addMissionSkillForm.hasError('required','status')">

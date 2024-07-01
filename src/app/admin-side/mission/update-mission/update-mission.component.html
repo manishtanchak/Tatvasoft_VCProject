@@ -47,7 +47,7 @@
                       <span class="text-danger" *ngIf="missionThemeId.invalid && (missionThemeId.touched || formValid)">
                         Please Select Mission Theme
                       </span>
-                      </div>
+                    </div>
                   </div>
                    <div class="row">
                     <div class="col-sm-6">
@@ -57,7 +57,10 @@
                         Please Enter Mission Description
                       </span>
                     </div>
-            
+                    <div class="col-sm-6">
+                      <label class="col-form-label">Total seats</label>
+                      <input type="number" class="form-control" placeholder="Enter total seets" formControlName="totalSheets">
+                    </div>
                    </div>
                    <div class="row">
                     <div class="col-sm-6">
